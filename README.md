@@ -1,2 +1,5 @@
-# DjangoDemo
-DjangoDemo
+# DjangoDemo演示项目用于毕业设计
+
+## 可能是一个电子商务类型网站
+
+### 开发分支为　ＤＥＶ
