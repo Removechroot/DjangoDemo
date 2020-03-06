@@ -117,7 +117,7 @@ EMAIL_HOST_USER = 'relive@aliyun.com'
 #在邮箱中设置的客户端授权密码
 EMAIL_HOST_PASSWORD = '@www0h@t.'
 #收件人看到的发件人
-EMAIL_FROM = 'python<relive@aliyun.com>'
+EMAIL_FROM = '天天生鲜开发组<relive@aliyun.com>'
 # Django 的缓存配置
 CACHES = {
     "default": {
@@ -131,3 +131,8 @@ CACHES = {
 # 配置Session的存储
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
+
+# 配置登陆url地址
+LOGIN_URL = '/user/login'
+# 设置django文件存储类
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
