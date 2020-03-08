@@ -136,3 +136,7 @@ SESSION_CACHE_ALIAS = "default"
 LOGIN_URL = '/user/login'
 # 设置django文件存储类
 DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
+
+FDFS_CLIENT_CONF='./utils/fdfs/client.conf'
+
+FDFS_URL = 'http://172.16.199.251:8888'

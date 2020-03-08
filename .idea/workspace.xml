@@ -18,6 +18,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YQNOutm9qFpR05Js75EvM7xJdC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,8 +31,8 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -93,6 +96,10 @@
       <workItem from="1582870843147" duration="7075000" />
       <workItem from="1582887870052" duration="22541000" />
       <workItem from="1583044752411" duration="40876000" />
+      <workItem from="1583499642129" duration="1010000" />
+      <workItem from="1583500670919" duration="184000" />
+      <workItem from="1583556882139" duration="986000" />
+      <workItem from="1583639904176" duration="6397000" />
     </task>
     <servers />
   </component>
@@ -100,9 +107,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="204" y="23" width="982" height="707" key="SettingsEditor" timestamp="1582871126321">
-      <screen x="0" y="23" width="1326" height="707" />
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583500702371">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583500702371" />
+    <state x="632" y="335" key="FileChooserDialogImpl" timestamp="1583646012515">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="632" y="335" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583646012515" />
+    <state x="311" y="181" width="982" height="707" key="SettingsEditor" timestamp="1583646019158">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="311" y="181" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583646019158" />
     <state x="204" y="23" width="982" height="707" key="SettingsEditor/0.23.1326.707@0.23.1326.707" timestamp="1582871126321" />
+    <state x="790" y="389" key="VCS.EditChangelistDialog" timestamp="1583500582145">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="790" y="389" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583500582145" />
+    <state x="751" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583500497719">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="751" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583500497719" />
   </component>
 </project>
