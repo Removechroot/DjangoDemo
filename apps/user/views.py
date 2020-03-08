@@ -77,9 +77,11 @@ def register_handle(request):
     # 3.返回应答
     return redirect(reverse('goods:index'))'''
 
+
 class RegisterView(View):
     def get(self, request):
         return render(request, 'register.html')
+
     def post(self, request):
         username = request.POST.get('user_name')
         password = request.POST.get('pwd')
@@ -91,7 +93,6 @@ class RegisterView(View):
         if not re.match(r'^[a-z0-9][\w.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$', email):
             return render(request, 'register.html', {'errmsg': '邮箱格式不正确'})
         if allow != 'on':
-
             render(request, 'register.html', {'errmsg': '请同意用户协议'})
         # 2.进行业务处理，进行用户注册
         # 校验用户名是否重复
@@ -127,7 +128,7 @@ class ActiveView(View):
             info = serializer.loads(token)
             # 获取激活用户ID
             user_id = info['confirm']
-            user = User.objects.get(id = user_id)
+            user = User.objects.get(id=user_id)
             user.is_active = 1
             user.save()
             # 跳转到登陆页面
@@ -135,6 +136,8 @@ class ActiveView(View):
         except SignatureExpired as e:
             # 激活链接过期
             return HttpResponse('激活已过期')
+
+
 # 用户登陆处理
 class LoginView(View):
     def get(self, request):
@@ -146,6 +149,7 @@ class LoginView(View):
             checked = ''
 
         return render(request, 'login.html', {'username': username, 'checked': checked})
+
     def post(self, request):
         # 接收数据
         username = request.POST.get('username')
@@ -153,19 +157,19 @@ class LoginView(View):
 
         # 校验数据
         if not all([username, password]):
-            return render(request, 'login.html', {'errmsg':'数据不完整'})
+            return render(request, 'login.html', {'errmsg': '数据不完整'})
         # 业务处理
-        user = authenticate(username=username, password=password) # 如果里面数据正确返回
+        user = authenticate(username=username, password=password)  # 如果里面数据正确返回
         if user is not None:
             if user.is_active:
                 login(request, user)
                 # 获取登陆后要跳转的地址
                 next_url = request.GET.get('next', reverse('goods:index'))
-                res =  redirect(next_url)
+                res = redirect(next_url)
                 # 判断是否记住用户名
                 remeber = request.POST.get('remeber')
                 if remeber == 'on':
-                    res.set_cookie('username', username, max_age=7*24*3600)
+                    res.set_cookie('username', username, max_age=7 * 24 * 3600)
                 else:
                     res.delete_cookie('username')
                 # 页面跳转
@@ -174,7 +178,9 @@ class LoginView(View):
                 return render(request, 'login.html', {'errmsg': '账户未激活'})
 
         else:
-            return render(request, 'login.html', {'errmsg':'账户或密码错误'})
+            return render(request, 'login.html', {'errmsg': '账户或密码错误'})
+
+
 # 用户登出处理
 class LogoutView(View):
     def get(self, request):
@@ -186,7 +192,7 @@ class LogoutView(View):
 # /user
 class UserInfoView(LoginRequiresMixin, View):
     def get(self, request):
-        user =request.user
+        user = request.user
         address = Address.objects.get_default_address(user)
         # 获取用户浏览记录
         # from redis import StrictRedis
@@ -196,18 +202,20 @@ class UserInfoView(LoginRequiresMixin, View):
         # 获取用户最新浏览的5个商品id
         sku_ids = con.lrange(history_key, 0, 4)
         # 从数据库中查询用户浏览的商品具体信息
-       # goods_li = GoodsSKU.objects.filter(id__in=sku_ids)
+        # goods_li = GoodsSKU.objects.filter(id__in=sku_ids)
 
         # 遍历获取用户浏览的商品信息
         goods_li = []
         for id in sku_ids:
             goods = GoodsSKU.objects.get(id=id)
             goods_li.append(goods)
-        context = {'page':'user',
-                   'address':address,
-                   'goods_li':goods_li}
+        context = {'page': 'user',
+                   'address': address,
+                   'goods_li': goods_li}
 
         return render(request, 'user_center_info.html', context)
+
+
 # /user/order
 class UserOrderView(LoginRequiresMixin, View):
     def get(self, request):
@@ -224,8 +232,9 @@ class AddressView(LoginRequiresMixin, View):
         #     # 不存在默认收货地址
         #     address = None
         address = Address.objects.get_default_address(user)
-        return render(request, 'user_center_site.html', {'page':'address', 'address': address})
-    def post(self,request):
+        return render(request, 'user_center_site.html', {'page': 'address', 'address': address})
+
+    def post(self, request):
         # 接收数据
         receiver = request.POST.get('receiver')
         addr = request.POST.get('addr')
@@ -233,10 +242,10 @@ class AddressView(LoginRequiresMixin, View):
         phone = request.POST.get('phone')
         # 校验数据
         if not all([receiver, addr, phone]):
-            return render(request, 'user_center_site.html', {'errmsg':'数据不完整'})
+            return render(request, 'user_center_site.html', {'errmsg': '数据不完整'})
         # 校验手机号
         if not re.match(r'1[3|4|5|7|8][0-9]{9}$', phone):
-            return render(request, 'user_center_site.html', {'errmsg':'手机号码错误'})
+            return render(request, 'user_center_site.html', {'errmsg': '手机号码错误'})
         # 业务处理:地址添加
         # 001-地址查重
         user = request.user
@@ -251,6 +260,7 @@ class AddressView(LoginRequiresMixin, View):
         else:
             is_default = True
         # 添加地址
-        Address.objects.create(user=user, receiver=receiver, addr=addr, zip_code=zip_code, phone=phone, is_default=is_default)
+        Address.objects.create(user=user, receiver=receiver, addr=addr, zip_code=zip_code, phone=phone,
+                               is_default=is_default)
         # 返回应答
         return redirect(reverse('user:address'))

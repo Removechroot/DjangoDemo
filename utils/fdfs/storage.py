@@ -36,9 +36,11 @@ class FDFSStorage(Storage):
         # }
         # if res.get('Status') != 'Upload successed':
         #     raise Exception('上传文件到fast dfs 失败')
-
+        if res.get('Status') != 'Upload successed.':
+            raise Exception('上传失败')
 
         filename = res.get('Remote file_id')
+        print(filename)
         return filename
 
     def exists(self, name):
